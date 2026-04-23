@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李恩彤 — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F5F1;
+  --bg2:#F2EDE6;
+  --bg3:#EAE3D9;
+  --accent:#C97A45;
+  --accent2:#B56A38;
+  --white:#1A1814;
+  --grey:#6B6460;
+  --grey2:#A09890;
+  --border:rgba(26,24,20,0.10);
+  --radius:4px;
+  --tr:0.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  font-size:15px;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:58px;
+  background:rgba(248,245,241,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-name{
+  font-size:11px;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:#888;
+  font-family:'Montserrat',sans-serif;
+}
+.nav-name span{color:var(--accent);margin-left:2px}
+.nav-divider{color:var(--grey2);margin:0 10px;font-weight:300;font-size:1.1em}
+.nav-name .nav-zh{font-size:12px;font-weight:500;color:var(--grey);letter-spacing:0.08em;font-family:'PingFang TC','Noto Sans TC',sans-serif;text-transform:none}
+.nav-email{
+  font-size:12px;color:var(--grey2);letter-spacing:0.06em;
+  transition:var(--tr);
+}
+.nav-email:hover{color:var(--accent)}
+
+/* ── HERO ── */
+#hero{
+  min-height:88vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 64px 64px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-photo{
+  position:absolute;inset:0;pointer-events:none;
+  background:url('hero-photo.jpg') 20% center / 130% auto no-repeat;
+}
+.hero-photo::after{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right, rgba(248,245,241,0.97) 0%, rgba(248,245,241,0.80) 45%, rgba(248,245,241,0.15) 100%),
+    linear-gradient(to top, rgba(248,245,241,0.6) 0%, transparent 40%);
+}
+.hero-number{
+  font-size:clamp(140px,22vw,280px);
+  font-weight:900;line-height:0.85;
+  color:rgba(26,24,20,0.05);
+  letter-spacing:-0.04em;
+  position:absolute;right:-20px;bottom:-30px;
+  pointer-events:none;user-select:none;
+  font-family:'Montserrat',sans-serif;
+}
+.hero-greeting{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(36px,6vw,90px);
+  font-weight:900;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:#1A1814;
+  margin-bottom:0;
+  position:relative;z-index:1;
+  line-height:1;
+}
+.hero-name-big{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(36px,6vw,90px);
+  font-weight:900;line-height:1;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:#1A1814;
+  margin-bottom:0;
+  position:relative;z-index:1;
+}
+.hero-name-big em,
+.hero-greeting em{
+  font-style:normal;
+  -webkit-text-stroke:1.5px var(--accent);
+  color:transparent;
+  display:block;
+}
+.hero-dot{
+  display:inline-block;
+  color:var(--accent);
+  -webkit-text-stroke:0;
+  font-size:1.1em;
+  line-height:1;
+}
+
+/* ── MAIN LAYOUT ── */
+#main{
+  padding-top:58px;
+}
+
+/* ── CONTENT AREA ── */
+#content{padding:48px 44px}
+
+/* ── CARD GRID ── */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,350px);
+  gap:2px;
+  justify-content:center;
+}
+
+/* ── FLIP CARD ── */
+.flip-wrap{
+  aspect-ratio:1/1;
+  perspective:1000px;
+  cursor:pointer;
+}
+.flip-wrap.hidden{display:none}
+.flip-wrap.fade-in{animation:fadeUp 0.4s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.flip-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform 0.55s cubic-bezier(.4,0,.2,1);
+}
+.flip-wrap:hover .flip-inner{transform:rotateY(180deg)}
+
+.flip-front,.flip-back{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  overflow:hidden;
+}
+
+/* FRONT */
+.flip-front{
+  background:var(--bg2);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:24px;
+  border:1px solid var(--border);
+}
+.flip-front::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(248,245,241,0.92) 0%,rgba(248,245,241,0.3) 50%,transparent 100%);
+  pointer-events:none;
+}
+.front-bg{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(60px,8vw,90px);
+  opacity:0.18;
+  filter:grayscale(0.2);
+}
+.front-content{position:relative;z-index:1}
+.front-type{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:8px;
+}
+.front-title{
+  font-size:clamp(14px,1.6vw,17px);
+  font-weight:800;color:var(--white);
+  line-height:1.25;margin-bottom:12px;
+  letter-spacing:-0.01em;
+}
+.front-tags{display:flex;flex-wrap:wrap;gap:5px}
+.ftag{
+  font-size:10px;font-weight:600;letter-spacing:0.04em;
+  padding:2px 8px;border-radius:2px;
+  border:1px solid rgba(168,189,208,0.25);
+  color:var(--grey);
+  text-transform:uppercase;
+}
+
+/* BACK */
+.flip-back{
+  transform:rotateY(180deg);
+  background:var(--accent);
+  padding:28px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.back-top{}
+.back-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:rgba(0,0,0,0.5);
+  margin-bottom:10px;
+}
+.back-title{
+  font-size:clamp(14px,1.5vw,16px);
+  font-weight:800;color:#fff;
+  margin-bottom:14px;line-height:1.3;
+}
+.back-summary{
+  font-size:clamp(12px,1.2vw,13px);
+  color:rgba(255,255,255,0.85);
+  line-height:1.75;
+}
+.back-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:var(--accent);
+  padding:10px 20px;
+  font-size:12px;font-weight:800;letter-spacing:0.1em;
+  text-transform:uppercase;
+  border:none;cursor:pointer;font-family:inherit;
+  transition:var(--tr);
+  align-self:flex-start;
+}
+.back-cta:hover{background:var(--bg2);gap:12px}
+.back-cta svg{width:14px;height:14px;flex-shrink:0}
+
+/* ── MODAL ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:600;
+  background:rgba(26,24,20,0.6);
+  backdrop-filter:blur(10px);
+  align-items:flex-start;justify-content:center;
+  padding:40px 20px;overflow-y:auto;
+}
+.modal-overlay.open{display:flex;animation:mfade 0.22s ease}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+
+.modal{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  width:100%;max-width:800px;
+  margin:auto;
+  position:relative;
+  overflow:hidden;
+}
+.modal-header{
+  padding:40px 44px 32px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.mh-type{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.mh-type::before{content:'';width:16px;height:1px;background:var(--accent)}
+.modal-title{
+  font-size:clamp(24px,3.5vw,36px);
+  font-weight:900;letter-spacing:-0.02em;
+  color:var(--white);line-height:1.1;
+  margin-bottom:12px;
+}
+.modal-tagline{
+  font-size:14px;color:var(--grey);
+  line-height:1.7;max-width:580px;
+}
+.modal-close{
+  position:absolute;top:20px;right:20px;
+  background:none;border:1px solid var(--border);
+  color:var(--grey2);
+  width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:14px;
+  transition:var(--tr);
+}
+.modal-close:hover{border-color:var(--white);color:var(--white)}
+.modal-tags-row{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;
+}
+
+.modal-body{padding:0}
+.modal-section{
+  padding:28px 44px;
+  border-bottom:1px solid var(--border);
+}
+.modal-section:last-child{border-bottom:none}
+.ms-title{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:16px;
+}
+.modal-section p{
+  font-size:14px;color:var(--grey);
+  line-height:1.85;margin-bottom:10px;
+}
+.modal-section p:last-child{margin-bottom:0}
+.modal-section p strong{color:var(--white);font-weight:600}
+.modal-section ul{
+  list-style:none;padding:0;
+  display:flex;flex-direction:column;gap:10px;
+}
+.modal-section ul li{
+  font-size:14px;color:var(--grey);
+  line-height:1.75;
+  padding-left:20px;position:relative;
+}
+.modal-section ul li::before{
+  content:'';position:absolute;left:0;top:10px;
+  width:4px;height:4px;border-radius:50%;
+  background:var(--accent);
+}
+.modal-section ul li strong{color:var(--white)}
+
+.callout{
+  border-left:2px solid var(--accent);
+  padding:14px 20px;
+  background:rgba(78,207,168,0.06);
+  font-size:14px;color:var(--grey);
+  line-height:1.8;margin:14px 0;
+}
+.callout strong{color:var(--accent)}
+
+/* stats */
+.stat-row{display:flex;gap:2px;margin:14px 0}
+.stat-box{
+  flex:1;background:var(--bg3);
+  padding:18px 14px;text-align:center;
+}
+.stat-num{font-size:32px;font-weight:900;color:var(--accent);line-height:1}
+.stat-unit{font-size:16px;font-weight:700;color:var(--accent)}
+.stat-lbl{font-size:11px;color:var(--grey2);margin-top:6px;line-height:1.4}
+
+/* bar chart */
+.bar-chart{margin:14px 0;display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bl{font-size:12px;color:var(--grey2);width:68px;flex-shrink:0;text-align:right}
+.bt{flex:1;background:rgba(255,255,255,0.06);height:8px;overflow:hidden}
+.bf{height:100%;background:var(--accent);transition:width 1s ease}
+.bv{font-size:12px;font-weight:700;color:var(--grey);width:34px;flex-shrink:0}
+
+/* path */
+.path-wrap{overflow-x:auto;padding:14px 0 4px;margin:4px 0}
+.path-row{display:flex;align-items:center;gap:6px;min-width:max-content}
+.pnode{
+  background:var(--bg3);border:1px solid var(--border);
+  padding:10px 16px;font-size:12px;font-weight:600;
+  color:var(--white);line-height:1.4;text-align:center;
+}
+.pnode small{display:block;font-size:10px;color:var(--grey2);font-weight:400;margin-top:2px}
+.pnode.hi{background:rgba(78,207,168,0.15);border-color:var(--accent);color:var(--accent)}
+.pnode.out{background:rgba(78,207,168,0.08);border-color:rgba(78,207,168,0.4);color:var(--accent)}
+.parr{color:var(--grey2);font-size:18px;flex-shrink:0}
+.path-note{font-size:11px;color:var(--grey2);margin-top:8px;line-height:1.7}
+
+/* modal links */
+.modal-links{
+  padding:24px 44px 32px;
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.mlink{
+  padding:10px 22px;
+  font-size:12px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;
+  border:1px solid var(--border);color:var(--grey);
+  transition:var(--tr);cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.mlink:hover{border-color:var(--accent);color:var(--accent)}
+.mlink.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.mlink.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  nav{padding:0 20px}
+  #hero{padding:0 20px 40px}
+  #sidebar{width:180px;padding:36px 18px}
+  #content{padding:36px 24px}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  #main{flex-direction:column}
+  #sidebar{
+    width:100%;height:auto;
+    position:static;
+    border-right:none;border-bottom:1px solid var(--border);
+    padding:24px 20px;
+  }
+  .filter-list{flex-direction:row;flex-wrap:wrap}
+  .filter-item{width:auto;padding:7px 14px}
+  .filter-count{display:none}
+  #content{padding:24px 20px}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .modal-header,.modal-section,.modal-links{padding-left:22px;padding-right:22px}
+}
+@media(max-width:480px){
+  .cards-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">EN-TUNG LEE'S PORTFOLIO<span class="nav-divider">｜</span><span class="nav-zh">李恩彤的作品集</span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:58px">
+  <div class="hero-photo"></div>
+  <div class="hero-greeting"><em>I<span class="hero-dot">'</span>M</em></div>
+  <h1 class="hero-name-big">EN-TUNG<br>LEE<span class="hero-dot">.</span></h1>
+</section>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- CONTENT -->
+  <div id="content">
+    <div class="cards-grid" id="grid">
+
+      <!-- 左欄：企劃提案 -->
+      <!-- Wellness -->
+      <div class="flip-wrap fade-in" onclick="openModal('wellness')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🐾</div>
+            <div class="front-content">
+              <div class="front-type">品牌傳播競賽</div>
+              <div class="front-title">Wellness 寵物品牌傳播企劃</div>
+              <div class="front-tags">
+                <span class="ftag">品牌策略</span>
+                <span class="ftag">受眾洞察</span>
+                <span class="ftag">問卷研究</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">2023 校園公關競賽 · 佳作</div>
+              <div class="back-title">切入「寵物分離焦慮症」，以數據驅動品牌情感定位</div>
+              <div class="back-summary">主導 PEST 分析與問卷設計，發現品牌停留在功能層缺乏情感連結，提出以飼主分離焦慮為核心的傳播策略。136 組競爭中入圍決賽獲佳作。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中欄：數據研究 -->
+      <!-- 戀與深空 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.07s" onclick="openModal('lovedp')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🎮</div>
+            <div class="front-content">
+              <div class="front-type">量化研究</div>
+              <div class="front-title">女性玩家為什麼留下來？</div>
+              <div class="front-tags">
+                <span class="ftag">數據分析</span>
+                <span class="ftag">用戶研究</span>
+                <span class="ftag">SPSS</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">《戀與深空》留存研究</div>
+              <div class="back-title">222 份問卷，解碼乙女遊戲玩家留存的心理機制</div>
+              <div class="back-summary">以自我決定論建立路徑模型，發現歸屬感能直接驅動留存，不需轉化為「樂趣」——這個反直覺結論對遊戲留存策略有直接意義。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄：UI/UX -->
+      <!-- 消防防災 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.14s" onclick="openModal('firesafety')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🚨</div>
+            <div class="front-content">
+              <div class="front-type">UI / UX Redesign</div>
+              <div class="front-title">消防防災 e 點通 App 重設計</div>
+              <div class="front-tags">
+                <span class="ftag">用戶研究</span>
+                <span class="ftag">視覺設計</span>
+                <span class="ftag">資訊架構</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">消防防災 e 點通</div>
+              <div class="back-title">訪談 16 位使用者，重新架構政府防災 App 的互動邏輯</div>
+              <div class="back-summary">以用戶研究定義四種使用者類型，設計「日常 / 災害模式切換」機制，完成品牌識別、Figma prototype 與 usability test。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 左欄：可樂果 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.21s" onclick="openModal('koloko')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🎡</div>
+            <div class="front-content">
+              <div class="front-type">整合行銷提案</div>
+              <div class="front-title">可樂果品牌年輕化提案</div>
+              <div class="front-tags">
+                <span class="ftag">品牌策略</span>
+                <span class="ftag">活動企劃</span>
+                <span class="ftag">Team Lead</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">偉門智威產學合作 · VML 最高分</div>
+              <div class="back-title">從消費者調查找到「驚喜感缺口」，設計扭蛋巡迴車品牌活化方案</div>
+              <div class="back-summary">擔任 Team Leader，設計問卷調查 50 位消費者，挖出年輕族群不買可樂果的真正原因——缺的不是認知，而是社交貨幣。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中欄：國科會 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.28s" onclick="openModal('nstc')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">👜</div>
+            <div class="front-content">
+              <div class="front-type">量化研究</div>
+              <div class="front-title">奢侈品飢餓行銷研究</div>
+              <div class="front-tags">
+                <span class="ftag">數據分析</span>
+                <span class="ftag">消費心理</span>
+                <span class="ftag">SPSS</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">國科會大專生研究計畫</div>
+              <div class="back-title">576 份問卷，量化稀缺性如何讓消費者心甘情願多付錢</div>
+              <div class="back-summary">獨立設計問卷、執行統計，以 SPSS 中介調節模型拆解「稀缺性 → 消費價值 → 溢價支付意願」的完整心理路徑，發現品牌威望的調節放大效果。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄：50嵐 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.35s" onclick="openModal('50lan')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🧋</div>
+            <div class="front-content">
+              <div class="front-type">UI / UX 設計</div>
+              <div class="front-title">50嵐官方網站重設計</div>
+              <div class="front-tags">
+                <span class="ftag">視覺設計</span>
+                <span class="ftag">資訊架構</span>
+                <span class="ftag">Figma</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">世新 UI/UX 課程</div>
+              <div class="back-title">整合四大分區、設計成分篩選器，完成電腦與手機雙版 prototype</div>
+              <div class="back-summary">從品牌痛點與市場分析出發，規劃以健康意識為核心的資訊架構，設計含多維篩選功能的產品頁面，完成完整 Figma prototype。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 左欄：MAZDA -->
+      <div class="flip-wrap fade-in" style="animation-delay:.42s" onclick="openModal('mazda')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg">🚗</div>
+            <div class="front-content">
+              <div class="front-type">整合行銷提案</div>
+              <div class="front-title">MAZDA 整合行銷提案</div>
+              <div class="front-tags">
+                <span class="ftag">品牌策略</span>
+                <span class="ftag">顧客旅程</span>
+                <span class="ftag">Team Lead</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">偉門智威產學合作 · VML 最高分</div>
+              <div class="back-title">以品牌哲學定位「新時代車主」，讓 MAZDA 成為生活方式的夥伴</div>
+              <div class="back-summary">擔任 Team Leader 帶領 9 人團隊，透過顧客旅程分析找到品牌與消費者的情感連結點，提出「生活哲學實踐者的夥伴」定位。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+  </div><!-- end content -->
+</div><!-- end main -->
+
+<!-- ═══════════════ MODALS ═══════════════ -->
+
+<!-- M1 消防防災 -->
+<div class="modal-overlay" id="modal-firesafety">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('firesafety')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">UI / UX Redesign · 政大 HCID 課程 · 2025</div>
+    <div class="modal-title">消防防災 e 點通<br>App 重設計</div>
+    <div class="modal-tagline">「讓防災成為日常的一部分，而不只是災難發生的那一秒」</div>
+    <div class="modal-tags-row">
+      <span class="ftag">用戶研究</span><span class="ftag">視覺設計</span><span class="ftag">流程設計</span><span class="ftag">資訊架構</span><span class="ftag">Figma</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">為什麼做這件事</div>
+      <p>台灣政府防災 App「消防防災 e 點通」在緊急情境中面臨嚴重問題：介面資訊密度過高、災害模式與日常模式未分離、使用者在高壓時刻無法快速找到所需功能。這不只是設計美觀的問題，而是<strong>在生死關頭能否真正幫助人</strong>的問題。本案針對這款真實存在的政府 App 進行以用戶為核心的完整重設計。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">用什麼方法</div>
+      <p>組員分工進行<strong>深度訪談 16 位使用者</strong>，涵蓋中年女性軍公教、女碩士生、設計業者、原住民女大學生等多元背景。訪談後以親和圖分析歸納出四種核心使用者類型：</p>
+      <ul>
+        <li><strong>關懷家庭型</strong>：安全概念以家人為核心，需要即時掌握家人位置與狀態的雙向通報功能</li>
+        <li><strong>理性冷靜型</strong>：在混亂情境中最怕「不知道下一步」，需要清晰應變步驟，拒絕花俏設計</li>
+        <li><strong>行動準備型</strong>：曾歷 921，強調演練與救難包，希望 App 像工作清單督促日常準備</li>
+        <li><strong>社群關懷型</strong>：關注部落自救能力，希望 App 成為政府與公民的雙向溝通橋樑</li>
+      </ul>
+      <div class="callout"><strong>核心洞察：</strong>使用者最深層的恐懼不是災害本身，而是「在最關鍵的時刻不知道下一步該怎麼辦」——這決定了整個設計的優先順序</div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">關鍵設計決策</div>
+      <ul>
+        <li><strong>日常 ／ 災害模式切換</strong>：災害模式僅保留避難指引、安全回報、離線地圖三項核心功能，大幅降低高壓情境下的操作負擔</li>
+        <li><strong>安全回報 Safety Check-in</strong>：一鍵向家人回報狀態並顯示即時位置，直接回應關懷家庭型用戶的核心需求</li>
+        <li><strong>離線避難地圖</strong>：網路中斷時仍可查詢避難所與路線，解決基礎設施失效的實際問題</li>
+        <li><strong>延續「熊安」品牌角色</strong>：保留原有吉祥物而非重新塑造——替換角色可能造成既有用戶認知落差，削弱品牌信任感</li>
+      </ul>
+      <p>完成品牌識別規範、UI 設計稿與互動 prototype 後，進行 <strong>usability testing</strong> 驗證使用者在壓力情境下能否順利完成核心任務流程。</p>
+    </div>
+  </div>
+  <div class="modal-links">
+    <a href="https://www.figma.com/proto/Jn02IwXEfLLAhBuh62YVnn/%E6%B6%88%E9%98%B2%E9%98%B2%E7%81%BDe%E9%BB%9E%E9%80%9A?node-id=264-2609&p=f&t=VvdA90DfijOGnIjY-1&scaling=scale-down&content-scaling=fixed&page-id=94%3A3&starting-point-node-id=264%3A2609" target="_blank" class="mlink primary">Figma Prototype →</a>
+  </div>
+</div>
+</div>
+
+<!-- M2 戀與深空 -->
+<div class="modal-overlay" id="modal-lovedp">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('lovedp')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">量化研究 · 政大傳播碩士課程 · 2025</div>
+    <div class="modal-title">女性玩家<br>為什麼留下來？</div>
+    <div class="modal-tagline">以自我決定論解碼《戀與深空》玩家留存機制</div>
+    <div class="modal-tags-row">
+      <span class="ftag">數據分析</span><span class="ftag">用戶研究</span><span class="ftag">SPSS</span><span class="ftag">中介調節分析</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">為什麼研究這個題目</div>
+      <p>《戀與深空》截至 2025 年 8 月<strong>全球營收達 7.5 億美金、累計玩家超 7,000 萬</strong>，是全球首款 3D 乙女遊戲。當業界都在追問「它為什麼爆紅」，本研究更想回答：<strong>是什麼讓玩家持續留下來？</strong></p>
+      <p>現有研究多聚焦於乙女遊戲的社會文化面向，極少從心理動機角度切入。問卷設計、研究框架與統計操作均由本人獨立完成。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">研究設計</div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">222</div><div class="stat-lbl">有效問卷</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">基本心理需求</div></div>
+        <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl">研究問題驗證</div></div>
+      </div>
+      <p style="margin-top:14px">以<strong>自我決定論（SDT）</strong>為框架，檢驗自主性、勝任感、歸屬感三項心理需求如何透過內在動機影響持續遊玩意圖。使用 SPSS 迴歸分析與 Hayes PROCESS 進行中介及調節中介效果分析。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">核心發現與路徑模型</div>
+      <div class="path-wrap">
+        <div class="path-row">
+          <div class="pnode hi">自主性<small>捏臉、路線選擇</small></div>
+          <div class="parr">→</div>
+          <div class="pnode hi">內在動機<small>樂趣感</small></div>
+          <div class="parr">→</div>
+          <div class="pnode out">持續遊玩意圖</div>
+        </div>
+      </div>
+      <div class="path-wrap">
+        <div class="path-row">
+          <div class="pnode hi">歸屬感<small>情感連結</small></div>
+          <div class="parr">→</div>
+          <div class="pnode hi">內在動機<small>部分中介</small></div>
+          <div class="parr">→</div>
+          <div class="pnode out">持續遊玩意圖</div>
+        </div>
+      </div>
+      <div class="path-note">↑ 自主性：須透過樂趣感轉化才能影響留存（完全中介）<br>↑ 歸屬感：<strong style="color:var(--accent)">可直接驅動留存，不需轉化為樂趣</strong>（部分中介＋直接效果）</div>
+      <div class="callout"><strong>反直覺發現：</strong>情感依附本身就是留存驅動力——玩家對角色的情感連結，即使沒有「好玩」的感受，也能讓她們繼續登入</div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">調節效果不顯著——這說明了什麼？</div>
+      <p>研究預設高涉入玩家的心理需求滿足對內在動機的影響會更強，但結果不顯著。本研究的解釋：</p>
+      <ul>
+        <li><strong>SDT 的普適性</strong>：心理需求是人類共通的，不因涉入程度而異——這暗示遊戲設計者無需過度區隔輕重度玩家的動機誘因</li>
+        <li><strong>樣本高同質性</strong>：乙女遊戲門檻本身已篩選掉低涉入受眾；問卷在專屬社群發放，樣本普遍屬中高度涉入，調節效果因此難以被偵測</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">對遊戲產業的實務意義</div>
+      <ul>
+        <li>角色情感連結的深化（劇情更新、語音互動、生日活動）對核心玩家留存的影響，比優化「好玩程度」更直接</li>
+        <li>女性玩家留存策略應優先設計「關係維繫機制」而非「挑戰難度梯度」</li>
+        <li>自主性設計（自定義形象、選擇路線）對提升內在動機有顯著效果，強化「個人化」功能具明確的留存回報</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- M3 Wellness -->
+<div class="modal-overlay" id="modal-wellness">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('wellness')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">品牌傳播競賽 · 財團法人公共關係基金會 · 2023</div>
+    <div class="modal-title">Wellness 寵物<br>品牌傳播企劃</div>
+    <div class="modal-tagline">27 組競爭，入圍決賽並獲佳作</div>
+    <div class="modal-tags-row">
+      <span class="ftag">品牌策略</span><span class="ftag">受眾洞察</span><span class="ftag">問卷研究</span><span class="ftag">PEST 分析</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">品牌挑戰</div>
+      <p>Wellness 是美國全天然寵物糧品牌，連續 24 年獲 WDJ 認證，全美市占率第二。在台灣市場，品牌認知停留在功能層（健康、天然），缺乏引發情感共鳴的差異化定位。</p>
+      <p><strong>市場背景：</strong>台灣寵物產業產值 580 億元；飼主每月預估花 3,000 元，實際花 5,000 元（高出 64%）；寵物登記數量已超越 15 歲以下孩童人口。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">問卷研究：消費者如何認知 Wellness？</div>
+      <p>自行設計問卷調查目標受眾的品牌定位認知：</p>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bl">健康</div><div class="bt"><div class="bf" style="width:33%"></div></div><div class="bv">33%</div></div>
+        <div class="bar-row"><div class="bl">天然</div><div class="bt"><div class="bf" style="width:28%"></div></div><div class="bv">28%</div></div>
+        <div class="bar-row"><div class="bl">有認證</div><div class="bt"><div class="bf" style="width:20%"></div></div><div class="bv">20%</div></div>
+        <div class="bar-row"><div class="bl">永續環保</div><div class="bt"><div class="bf" style="width:18%"></div></div><div class="bv">18%</div></div>
+        <div class="bar-row"><div class="bl">產品多樣</div><div class="bt"><div class="bf" style="width:17%"></div></div><div class="bv">17%</div></div>
+        <div class="bar-row"><div class="bl">高價</div><div class="bt"><div class="bf" style="width:16%"></div></div><div class="bv">16%</div></div>
+      </div>
+      <div class="callout"><strong>洞察：</strong>消費者「知道 Wellness 好」，但沒有情感連結的理由去「愛上它」——品牌溝通停留在產品層，未進入消費者的生活敘事</div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">PEST 環境分析關鍵發現</div>
+      <ul>
+        <li><strong>社會趨勢</strong>：不婚人口上升，寵物取代孩子成為情感依附對象；21–30 歲孤獨感最高（65.2%），飼養寵物是獲取親密感的主要途徑</li>
+        <li><strong>科技機會</strong>：寵物攝像頭、AR 互動等智能設備快速普及，「陪伴」從單向進化為雙向情感交流</li>
+        <li><strong>法規背景</strong>：2017 年零撲殺政策實施，社會對動物保護意識提升，飼主與寵物的情感連結更趨向「家人」定位</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">傳播策略核心</div>
+      <p>切入「<strong>寵物分離焦慮症</strong>」——上班、出差、深夜加班時，不確定寵物是否安好的焦慮感是真實且普遍的飼主痛點。將 Wellness「天然健康」的功能性訴求升格為<strong>「全天候守護，即使你不在旁邊」</strong>的情感承諾，讓品牌從「好糧食的選擇」進化為「負責任飼主身份認同」的一部分。</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- M4 可樂果 -->
+<div class="modal-overlay" id="modal-koloko">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('koloko')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">整合行銷提案 · 偉門智威產學合作 · 2023</div>
+    <div class="modal-title">可樂果品牌<br>年輕化提案</div>
+    <div class="modal-tagline">VML 執行長及創意總監評為最高分</div>
+    <div class="modal-tags-row">
+      <span class="ftag">Team Leader</span><span class="ftag">品牌策略</span><span class="ftag">消費者調查</span><span class="ftag">活動企劃</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">為什麼做這件事</div>
+      <p>偉門智威（VML）與世新大學合作的產學實戰課程，由 VML 執行長與創意總監擔任評審。擔任 <strong>Team Leader</strong>，統籌整個提案流程。</p>
+      <p><strong>挑戰設定：</strong>通貨膨脹環境下預算削減 15%，目標在競爭激烈的品類中增加市占率、獲取新客戶。品牌核心問題是雙重流失：原有消費者（40 歲以上）健康意識抬頭減少購買；年輕族群雖有品牌認知，但消費頻率低。品牌曾找 E.so 瘦子合作嘗試年輕化，但調查發現<strong>許多目標族群根本不知道這次合作</strong>，傳播未有效觸及目標對象。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">消費者研究</div>
+      <p>自行設計問卷進行<strong>碎石子調查（50 位受訪者）</strong>並建立 Persona，同時分析競爭品類趨勢（植物肉洋芋片、輕負擔零食等新興品類正在侵蝕可樂果的消費時機）。</p>
+      <ul>
+        <li>可樂果在年輕族群有「中年零食」刻板印象，但同時具備高度品牌好感（國民零食、台灣道地）</li>
+        <li>年輕族群喜歡「打開包裝後的驚喜感」，期待每次購買都有意外</li>
+        <li>零食消費情境高度集中在社交場景（聚會、喝酒、嘴饞）</li>
+        <li>市面嚴重缺乏「有驚喜感與娛樂性」的零食體驗</li>
+      </ul>
+      <div class="callout"><strong>核心洞察：</strong>年輕人不是不喜歡可樂果，而是品牌沒有給他們「一個說出口的理由」去買、去分享——缺的不是認知，而是社交貨幣</div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">提案核心：可樂果扭蛋巡迴車</div>
+      <p>「<strong>大膽扭出你的快樂</strong>」——把品牌核心價值「快樂」具象化成走遍全台的參與式體驗裝置。</p>
+      <ul>
+        <li><strong>體驗流程：</strong>吃可樂果測分貝（達 70dB）→ 轉扭蛋 → 抽到任務紙條 → 時限內完成大冒險（現場屁股寫字、用「我是 So ○ 果」造句等）</li>
+        <li><strong>社群機制：</strong>全程錄影 #扭出你的快樂，IG 限時動態標註官方帳號，觸發 UGC 內容自然擴散</li>
+        <li><strong>包裝改造：</strong>包裝內裡印大冒險字樣，把驚喜感延伸到每次開箱</li>
+        <li><strong>預算規劃：</strong>24 天全台巡迴，總計約 90 萬，符合削減 15% 後的預算框架</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- M5 MAZDA -->
+<div class="modal-overlay" id="modal-mazda">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('mazda')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">整合行銷提案 · 偉門智威產學合作 · 2023</div>
+    <div class="modal-title">MAZDA 整合<br>行銷提案</div>
+    <div class="modal-tagline">VML 執行長及創意總監評為最高分</div>
+    <div class="modal-tags-row">
+      <span class="ftag">Team Leader</span><span class="ftag">品牌策略</span><span class="ftag">顧客旅程</span><span class="ftag">受眾定位</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">品牌挑戰</div>
+      <p>擔任 <strong>Team Leader</strong> 帶領 9 人團隊。MAZDA 台灣市占率 3.6%（2022），品牌以日式工藝美學與駕車樂趣著稱，但在大眾溝通上缺乏能讓潛在消費者「感受到連結」的切入點——消費者知道 MAZDA 質感好，但不確定它和「我的生活」有什麼關係。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">消費者洞察與受眾定位</div>
+      <p>透過品牌分析、競品研究與消費者訪談，定義目標族群為<strong>「新時代男女性」</strong>：有自己的休閒生活（潛水、攝影、騎車、畫畫），在意內裝功能細節與外型美學，高度重視購車流程中的接待服務體驗。</p>
+      <p>顧客旅程分析發現，這群消費者在購車決策中最看重的不是規格表，而是：<strong>這款車能不能融入我認真對待生活的方式？</strong>他們把選車視為一種自我宣告。</p>
+      <div class="callout"><strong>品牌對齊洞察：</strong>MAZDA 的品牌精神「認真享受挑戰，持續探索自我獨創之道」與這群消費者的生活態度高度重合——問題不是沒有連結，而是溝通方式還沒讓他們感受到這份連結</div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">傳播核心概念</div>
+      <p>將 MAZDA 從「汽車品牌」重新定位為<strong>「生活哲學實踐者的夥伴」</strong>。不是在賣一輛車，而是在說：有一種人，認真感受生活的每個細節，努力活出自己想要的樣子——MAZDA 是讓這條路走得更有力量的後盾。</p>
+      <p>傳播主軸：「<strong>綻放笑顏，充實精彩人生——讓 MAZDA 成為你最堅強的後盾</strong>」，以真實車主的生活故事作為內容載體，而非產品功能展示。</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- M6 國科會 -->
+<div class="modal-overlay" id="modal-nstc">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('nstc')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">量化研究 · 國科會大專生研究計畫 · 2023–2024</div>
+    <div class="modal-title">奢侈品飢餓<br>行銷研究</div>
+    <div class="modal-tagline">稀缺性如何讓消費者心甘情願多付錢？</div>
+    <div class="modal-tags-row">
+      <span class="ftag">獨立執行</span><span class="ftag">問卷設計</span><span class="ftag">SPSS</span><span class="ftag">中介調節模型</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">為什麼研究這個題目</div>
+      <p>Hermès 配貨制度是時尚產業公開的秘密：消費者必須先在品牌累積消費金額，才能獲得購買柏金包的資格——這是一種讓消費者主動配合的溢價支付行為。</p>
+      <p>奢侈品消費與稀缺性行銷的研究相當豐富，但<strong>以「配貨溢價支付意願」為核心研究標的</strong>在當時幾乎是空白。問卷設計、資料收集與統計分析均由本人獨立完成，指導教授協助方向把關。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">研究設計</div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">576</div><div class="stat-lbl">有效問卷</div></div>
+        <div class="stat-box"><div class="stat-num">99.8<span class="stat-unit">%</span></div><div class="stat-lbl">回收率</div></div>
+        <div class="stat-box"><div class="stat-num">74.8<span class="stat-unit">%</span></div><div class="stat-lbl">女性受訪者</div></div>
+      </div>
+      <p style="margin-top:14px">樣本以 18–35 歲為主（72.9%）。統計方法：SPSS 迴歸分析 + Hayes PROCESS <strong>Model 4（中介效果）</strong>與 <strong>Model 7（調節中介效果）</strong>，建立三層次路徑模型。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">核心路徑模型</div>
+      <div class="path-wrap">
+        <div class="path-row">
+          <div class="pnode hi">稀缺性知覺<small>飢餓行銷效果</small></div>
+          <div class="parr">→</div>
+          <div class="pnode">自我表達價值<small>我想成為的樣子</small></div>
+          <div class="parr">→</div>
+          <div class="pnode out">溢價支付意願</div>
+        </div>
+      </div>
+      <div class="path-wrap">
+        <div class="path-row">
+          <div class="pnode hi">稀缺性知覺</div>
+          <div class="parr">→</div>
+          <div class="pnode">炫耀性知覺<small>向他人展示財富</small></div>
+          <div class="parr">→</div>
+          <div class="pnode out">溢價支付意願</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">核心發現</div>
+      <ul>
+        <li><strong>稀缺性直接正向影響溢價支付意願</strong>，同時透過自我表達價值與炫耀性知覺的中介產生間接影響</li>
+        <li><strong>品牌威望產生調節放大效果</strong>：品牌威望愈高，稀缺商品的自我表達價值感就愈強——同樣的限量策略，在高威望品牌上效果遠高於低威望品牌</li>
+        <li><strong>自我展演價值（他人眼光）的中介不顯著</strong>：消費者更在意「稀缺商品讓我成為什麼樣的人」，而非「別人如何看我」——自我認同比他人眼光更驅動配貨消費</li>
+      </ul>
+      <div class="callout"><strong>行銷意義：</strong>飢餓行銷的有效性不只靠「稀缺」本身，更依賴品牌威望的加乘——這解釋了為何同樣的限量策略，Hermès 能讓消費者排隊數年，而其他品牌的限量版卻滯銷</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- M7 50嵐 -->
+<div class="modal-overlay" id="modal-50lan">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('50lan')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">UI / UX 設計 · 世新大學課程 · 2023</div>
+    <div class="modal-title">50嵐官方<br>網站重設計</div>
+    <div class="modal-tagline">從品牌痛點出發，設計真正好用的手搖飲品牌官網</div>
+    <div class="modal-tags-row">
+      <span class="ftag">視覺設計</span><span class="ftag">資訊架構</span><span class="ftag">市場分析</span><span class="ftag">Figma</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-section">
+      <div class="ms-title">為什麼做這件事</div>
+      <p>50 嵐是全台第二大連鎖茶飲品牌，但官網存在明確問題：資訊以台北區為主、四大分區資訊分散、缺乏產品成分標示、頁面設計吸引力不足。隨著消費者健康意識提升，<strong>官網能否提供成分透明度與方便查詢的門市資訊，直接影響品牌好感度</strong>。</p>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">市場分析與設計依據</div>
+      <ul>
+        <li>手搖飲高飲用率族群以 13–44 歲為主，35 歲以下占比更高</li>
+        <li>消費者健康意識抬頭，成分透明化成為選購關鍵考量</li>
+        <li>消費者普遍以手機導航搜尋店家，地圖整合是實際需求</li>
+        <li>50 嵐四大分區各自獨立經營，品項與價格不同，統整資訊架構是最大挑戰</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <div class="ms-title">核心設計決策</div>
+      <ul>
+        <li><strong>整合四大分區至同一官網</strong>：以清晰的分區切換設計導覽，讓消費者一站查齊全台資訊</li>
+        <li><strong>產品資訊透明化</strong>：每項飲料完整標示成分、熱量、糖量、咖啡因與即時價格</li>
+        <li><strong>多維篩選器</strong>：依價格、冷熱、熱量、糖量、咖啡因、過敏原六維度篩選，滿足特殊飲食需求</li>
+        <li><strong>全台門市地圖整合</strong>：點擊可直接連結 Google Map 導航，縮短查詢到到店的流程</li>
+        <li><strong>中英雙語版本</strong>：考量外籍消費者與觀光族群需求</li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-links">
+    <a href="https://www.figma.com/proto/4WsDEyWa1NkwXwfrOFS3CT/%E6%9C%9F%E4%B8%AD%E5%A0%B1%E5%91%8A?node-id=4-11&starting-point-node-id=4%3A3&t=T9b84Bq9bRUmPSOH-1" target="_blank" class="mlink primary">電腦版 Prototype →</a>
+    <a href="https://www.figma.com/proto/4WsDEyWa1NkwXwfrOFS3CT?node-id=259-789&t=De52aoEbfjXMzEzR-6" target="_blank" class="mlink">手機版 Prototype</a>
+    <a href="https://www.figma.com/board/CNaQIGToSTEJsRGXlTLE95/0928-A110050043%E6%9D%8E%E6%81%A9%E5%BD%A4?t=De52aoEbfjXMzEzR-6" target="_blank" class="mlink">市場調查 ＆ 資訊架構</a>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════ JS ═══════════ -->
+<script>
+// Filter
+const filterBtns = document.querySelectorAll('.filter-item');
+const cards = document.querySelectorAll('.flip-wrap');
+const countEl = document.getElementById('visibleCount');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    let visible = 0, delay = 0;
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      const show = f === 'all' || tags.includes(f);
+      if (show) {
+        card.classList.remove('hidden');
+        card.style.animationDelay = (delay * 0.08) + 's';
+        card.classList.remove('fade-in');
+        void card.offsetWidth;
+        card.classList.add('fade-in');
+        delay++; visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    countEl.textContent = visible;
+  });
+});
+
+// Modal
+function openModal(id) {
+  const el = document.getElementById('modal-' + id);
+  if (el) { el.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const el = document.getElementById('modal-' + id);
+  if (el) { el.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => {
+    if (e.target === o) { o.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(o => {
+      o.classList.remove('open'); document.body.style.overflow = '';
+    });
+  }
+});
+
+// Animate bars on modal open
+const barObserver = new MutationObserver(mutations => {
+  mutations.forEach(m => {
+    if (m.target.classList.contains('open')) {
+      setTimeout(() => {
+        m.target.querySelectorAll('.bf').forEach(b => {
+          const w = b.style.width; b.style.width = '0';
+          setTimeout(() => { b.style.width = w; }, 60);
+        });
+      }, 120);
+    }
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  barObserver.observe(o, { attributes: true, attributeFilter: ['class'] });
+});
+</script>
+</body>
+</html>
