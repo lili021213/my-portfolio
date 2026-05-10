@@ -458,9 +458,34 @@ nav{
   <div id="content">
     <div class="cards-grid" id="grid">
 
-      <!-- 左欄：企劃提案 -->
+      <!-- 食剩玩家 -->
+      <div class="flip-wrap fade-in" onclick="openModal('foodwaste')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="front-bg" style="background-image:url('food.png')"></div>
+            <div class="front-content">
+              <div class="front-type">資料爬取與分析</div>
+              <div class="front-title">食剩玩家｜政大校園剩食平台</div>
+              <div class="front-tags">
+                <span class="ftag">Python</span>
+                <span class="ftag">Playwright</span>
+                <span class="ftag">資料爬取</span>
+              </div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="back-top">
+              <div class="back-label">政大社會傳播導向的大數據分析課程 · 2026</div>
+              <div class="back-title">爬取 10,000+ 筆非結構化貼文，自動化識別校園剩食的時空規律</div>
+              <div class="back-summary">以 Python + Playwright 建立自動爬取與清洗流程，導入 AI 輔助關鍵字迭代，從海量原始資料中篩出目標資料，透過視覺化揭示政大校園剩食的時間與空間分布結構。</div>
+            </div>
+            <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
       <!-- Wellness -->
-      <div class="flip-wrap fade-in" onclick="openModal('wellness')">
+      <div class="flip-wrap fade-in" style="animation-delay:.07s" onclick="openModal('wellness')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-wellness.png')"></div>
@@ -486,9 +511,8 @@ nav{
         </div>
       </div>
 
-      <!-- 中欄：數據研究 -->
       <!-- 戀與深空 -->
-      <div class="flip-wrap fade-in" style="animation-delay:.07s" onclick="openModal('lovedp')">
+      <div class="flip-wrap fade-in" style="animation-delay:.14s" onclick="openModal('lovedp')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-lovedp.png')"></div>
@@ -498,7 +522,7 @@ nav{
               <div class="front-tags">
                 <span class="ftag">問卷調查</span>
                 <span class="ftag">數據分析</span>
-                <span class="ftag">使用者研究</span>
+                <span class="ftag">用戶研究</span>
               </div>
             </div>
           </div>
@@ -513,9 +537,8 @@ nav{
         </div>
       </div>
 
-      <!-- 右欄：UI/UX -->
       <!-- 消防防災 -->
-      <div class="flip-wrap fade-in" style="animation-delay:.14s" onclick="openModal('firesafety')">
+      <div class="flip-wrap fade-in" style="animation-delay:.21s" onclick="openModal('firesafety')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-firesafety.png');background-position:center 30%"></div>
@@ -523,8 +546,8 @@ nav{
               <div class="front-type">UI / UX Redesign</div>
               <div class="front-title">消防防災 e 點通 App 重設計</div>
               <div class="front-tags">
-                <span class="ftag">使用者研究</span>
-                <span class="ftag">UI設計</span>
+                <span class="ftag">用戶研究</span>
+                <span class="ftag">視覺設計</span>
                 <span class="ftag">Usability Testing</span>
               </div>
             </div>
@@ -533,15 +556,15 @@ nav{
             <div class="back-top">
               <div class="back-label">消防防災 e 點通</div>
               <div class="back-title">訪談 16 位使用者，重新架構政府防災 App 的互動邏輯</div>
-              <div class="back-summary">以使用者研究定義四種使用者類型，設計「日常 / 災害模式切換」機制，完成品牌識別、Figma prototype 與 usability test。</div>
+              <div class="back-summary">以用戶研究定義四種使用者類型，設計「日常 / 災害模式切換」機制，完成品牌識別、Figma prototype 與 usability test。</div>
             </div>
             <button class="back-cta">查看詳情 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
 
-      <!-- 左欄：可樂果 -->
-      <div class="flip-wrap fade-in" style="animation-delay:.21s" onclick="openModal('koloko')">
+      <!-- 可樂果 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.28s" onclick="openModal('koloko')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-koloko.png')"></div>
@@ -567,8 +590,8 @@ nav{
         </div>
       </div>
 
-      <!-- 中欄：國科會 -->
-      <div class="flip-wrap fade-in" style="animation-delay:.28s" onclick="openModal('nstc')">
+      <!-- 國科會 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.35s" onclick="openModal('nstc')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-nstc.png')"></div>
@@ -594,8 +617,8 @@ nav{
         </div>
       </div>
 
-      <!-- 右欄：50嵐 -->
-      <div class="flip-wrap fade-in" style="animation-delay:.35s" onclick="openModal('50lan')">
+      <!-- 50嵐 -->
+      <div class="flip-wrap fade-in" style="animation-delay:.42s" onclick="openModal('50lan')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-50lan.png')"></div>
@@ -603,8 +626,8 @@ nav{
               <div class="front-type">UI / UX REDESIGN</div>
               <div class="front-title">50嵐官方網站重設計</div>
               <div class="front-tags">
-                <span class="ftag">UI設計</span>
-                <span class="ftag">使用者研究</span>
+                <span class="ftag">視覺設計</span>
+                <span class="ftag">使用者分析</span>
                 <span class="ftag">市場分析</span>
                 <span class="ftag">Figma</span>
               </div>
@@ -621,8 +644,8 @@ nav{
         </div>
       </div>
 
-      <!-- 左欄：MAZDA -->
-      <div class="flip-wrap fade-in" style="animation-delay:.42s" onclick="openModal('mazda')">
+      <!-- MAZDA -->
+      <div class="flip-wrap fade-in" style="animation-delay:.49s" onclick="openModal('mazda')">
         <div class="flip-inner">
           <div class="flip-front">
             <div class="front-bg" style="background-image:url('card-mazda.png')"></div>
@@ -663,7 +686,7 @@ nav{
     <div class="modal-title">消防防災 e 點通 App 重設計</div>
     <div class="modal-tagline">「讓防災成為日常的一部分，而不只是災難發生的那一秒」</div>
     <div class="modal-tags-row">
-      <span class="ftag">使用者研究</span><span class="ftag">UI設計</span><span class="ftag">Usability Testing</span>
+      <span class="ftag">用戶研究</span><span class="ftag">視覺設計</span><span class="ftag">Usability Testing</span>
     </div>
   </div>
   <div class="modal-body">
@@ -737,7 +760,7 @@ nav{
     <div class="modal-title">乙女遊戲玩家<br>為什麼留下來？</div>
     <div class="modal-tagline">以自我決定論解碼《戀與深空》玩家心理機制</div>
     <div class="modal-tags-row">
-      <span class="ftag">問卷調查</span><span class="ftag">數據分析</span><span class="ftag">使用者研究</span>
+      <span class="ftag">問卷調查</span><span class="ftag">數據分析</span><span class="ftag">用戶研究</span>
     </div>
   </div>
   <div class="modal-body">
@@ -1545,7 +1568,7 @@ nav{
     <div class="modal-title">50嵐官方網站重設計</div>
     <div class="modal-tagline">從品牌痛點出發，設計真正好用的手搖飲品牌官網</div>
     <div class="modal-tags-row">
-      <span class="ftag">UI設計</span><span class="ftag">使用者研究</span><span class="ftag">市場分析</span><span class="ftag">Figma</span>
+      <span class="ftag">視覺設計</span><span class="ftag">使用者分析</span><span class="ftag">市場分析</span><span class="ftag">Figma</span>
     </div>
   </div>
   <div class="modal-body">
@@ -1577,6 +1600,70 @@ nav{
   <div class="modal-links">
     <a href="https://www.figma.com/proto/4WsDEyWa1NkwXwfrOFS3CT/%E6%9C%9F%E4%B8%AD%E5%A0%B1%E5%91%8A?node-id=4-11&starting-point-node-id=4%3A3&t=T9b84Bq9bRUmPSOH-1" target="_blank" class="mlink primary">電腦版 Prototype →</a>
     <a href="https://www.figma.com/proto/4WsDEyWa1NkwXwfrOFS3CT?node-id=259-789&t=De52aoEbfjXMzEzR-6" target="_blank" class="mlink">手機版 Prototype</a>
+  </div>
+</div>
+</div>
+
+<!-- M8 食剩玩家 -->
+<div class="modal-overlay" id="modal-foodwaste">
+<div class="modal">
+  <button class="modal-close" onclick="closeModal('foodwaste')">✕</button>
+  <div class="modal-header">
+    <div class="mh-type">資料爬取與分析 · 政大社會傳播導向的大數據分析課程 · 2026</div>
+    <div class="modal-title">食剩玩家｜政大校園剩食平台</div>
+    <div class="modal-tagline">用大數據翻轉剩食，讓每一口都有去處</div>
+    <div class="modal-tags-row">
+      <span class="ftag">Python</span><span class="ftag">Playwright</span><span class="ftag">資料爬取</span>
+    </div>
+  </div>
+  <div class="modal-body">
+
+    <!-- 1. 為什麼做這件事 -->
+    <div class="modal-section">
+      <div class="ms-title">為什麼做這件事</div>
+      <p>政大校園每日產生大量可食用但未被消耗的剩食——講座便當、餐廳剩菜、超商即期品——這些資源並非無用，而是因為資訊傳遞失靈而錯置。目前主要仰賴 Facebook「政大交流版」發布剩食通知，但演算法延遲、資訊零碎，學生常看到貼文時食物早已被領完，形成「有需求卻找不到，有剩食卻送不出」的結構性困境。</p>
+      <p>本專案以大數據方法系統性分析政大交流版的歷史貼文，<strong>量化剩食資訊的時空分布規律</strong>，為後續智慧媒合平台的設計提供實證基礎，同時也是一次以 Python 建立完整資料工程流程的實作。</p>
+    </div>
+
+    <!-- 2. 技術架構 -->
+    <div class="modal-section">
+      <div class="ms-title">技術架構</div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">10,000<span class="stat-unit">+</span></div><div class="stat-lbl">原始爬取貼文</div></div>
+        <div class="stat-box"><div class="stat-num">5</div><div class="stat-lbl">貼文自動分類類型</div></div>
+        <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl">關鍵字迭代版本</div></div>
+      </div>
+      <p style="margin-top:18px"><strong>① 爬蟲系統設計</strong></p>
+      <p>以 Python + Playwright 搭配 playwright-stealth 模擬真人瀏覽行為，降低反爬蟲攔截風險。實作<strong>自適應快轉機制</strong>，依當前貼文時間與目標日期的距離動態調整抽樣間隔與捲動速度——距目標越遠、抽樣越稀疏、捲動越快；抵達目標日期後自動切換為精細爬取模式。資料透過 Google Sheets API 批次寫入，每累積 10 筆即上傳，防止程式中斷造成資料遺失。</p>
+      <p><strong>② 自動分類與清洗流程</strong></p>
+      <p>設計五類貼文分類邏輯（即時剩食、活動供餐預告、勞力回饋、店家促銷、雜訊），以 IFS 公式對全體貼文自動分類。導入 AI 語言模型輔助關鍵字設計，採<strong>人機協作迭代流程</strong>：研究者初擬關鍵字 → AI 識別語義變體與邊界案例 → 人工複審 → 再次迭代，共歷經四個版本，大幅取代人工逐篇審閱，也解決口語化貼文格式不固定的問題。</p>
+      <p><strong>③ 標籤化與視覺化</strong></p>
+      <p>針對篩出的即時剩食貼文進行多維標籤化：食物品類（7 類）、發生地點（25 類）、星期、時段、月份，部分欄位以公式自動萃取，最終以長條圖、圓餅圖、熱力圖呈現剩食的時空分布規律。</p>
+    </div>
+
+    <!-- 3. 主要發現 -->
+    <div class="modal-section">
+      <div class="ms-title">主要發現</div>
+      <ul>
+        <li><strong>剩食集中於傍晚至夜間：</strong>晚間 18–22 時占 33.7%，午間與下午合計再占 61.8%，三個時段共佔 95.5%，與校園活動結束時間高度吻合，顯示貼文時間普遍滯後於活動本身</li>
+        <li><strong>週三、週五為高峰日：</strong>週三（21.3%）與週五（20.2%）為即時剩食貼文最多的兩天，平日合計占 76.4%，與課程及學術活動的排程規律一致</li>
+        <li><strong>地點高度集中於核心院館：</strong>綜合院館為最主要剩食來源（25.3%），前五大地點合計占 56.8%，顯示剩食資源在空間上具強烈集中性，可作為熱力圖預測的依據</li>
+        <li><strong>便當為絕對主流食物類型：</strong>即時剩食中便當／餐盒占 71.6%，遠高於其他品類，反映校園活動供餐以訂購便當為主流，也指向平台分類設計的優先方向</li>
+      </ul>
+    </div>
+
+    <!-- 4. 後續規劃 -->
+    <div class="modal-section">
+      <div class="ms-title">後續規劃</div>
+      <p>本階段的資料分析是平台建置的前期實證基礎，後續規劃延伸至以下四個方向：</p>
+      <ul>
+        <li><strong>地圖視覺化：</strong>串接 Google Maps API 建立校園空間資料庫，將剩食熱點以地圖形式視覺化呈現，讓使用者直觀掌握當下附近的剩食分布</li>
+        <li><strong>平台回報介面：</strong>建置剩食平台作為商家與活動主辦方的自主回報介面，補足爬蟲資料以外的結構化數據來源，提升資訊完整性</li>
+        <li><strong>個人化推播與智慧媒合：</strong>使用者可設定飲食偏好、所在位置與通知時段，平台根據其喜好即時推送附近符合條件的剩食資訊，實現供需雙方的智慧媒合</li>
+        <li><strong>Data Pipeline 全自動化：</strong>建置完整的資料管線，讓爬取到的原始資料自動導入資料庫、觸發清洗與分類流程，並即時同步至平台前端，實現從資料蒐集到媒合推播的全自動化運作</li>
+      </ul>
+    </div>
+
   </div>
 </div>
 </div>
